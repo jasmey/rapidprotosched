@@ -42,7 +42,7 @@ const App = () => {
 
   return (
     <section>
-      <Banner banner_title={bannerTitle} />
+      <Banner title={bannerTitle} />
       <Courselist
         courses={schedule.courses}
         prm1={clinput1}
