@@ -1,9 +1,9 @@
 import React from 'react';
 
-function banner(banner_title) {
+export function Banner(banner_title) {
     return (
-        <div>
+        <section>
             <h1>{banner_title}</h1>
-        </div>
+        </section>
     );
 }

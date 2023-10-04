@@ -1,15 +1,24 @@
 import React from 'react';
 
-function courselist(courses, prm1, prm2, prm3) {
+export function Courselist(courses, prm1, prm2, prm3) {
 
-    const courseInfo = [];
+    const courseElems = [];
 
     for (let course in courses){
-        courseInfo.push(<p>{course[prm1]} CS {course[prm2]}: {course[prm3]}\n</p>);
+        const prmx = course[prm1];
+        const prmy = course[prm2];
+        const prmz = course[prm3];
+        
+        const courseElem = (
+            <p key={course}> 
+                {prmx} CS {prmy}: {prmz}
+            </p>
+        );
+        courseElems.push(courseElem);
     }
     return(
-        <div>
-            {courseInfo}
-        </div>
+        <section>
+            {courseElems}
+        </section>
     ); 
 }

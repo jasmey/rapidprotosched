@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import banner from './components/banner.jsx'
-import courselist from './components/courselist.jsx'
+import {Banner} from './components/banner.jsx'
+import {Courselist} from './components/courselist.jsx'
 
 
 const schedule = {
@@ -39,8 +39,8 @@ const schedule = {
 const App = () => {
   return(
     <section>
-      <banner/>
-      <courselist/>
+      <Banner({schedule.title}) />
+      <Courselist({schedule."courses"}, "term", "number", "title") />
     </section>
   );
     
