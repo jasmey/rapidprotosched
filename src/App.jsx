@@ -35,7 +35,7 @@ const schedule = {
 };
 
 const App = () => {
-  const [bannerTitle, setBannerTitle] = useState("schedule.title");
+  const [bannerTitle, setBannerTitle] = useState(schedule.title);
   const clinput1 = "term";
   const clinput2 = "number";
   const clinput3 = "title";
