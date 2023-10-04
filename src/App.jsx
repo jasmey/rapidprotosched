@@ -6,7 +6,7 @@ import {Courselist} from './components/courselist.jsx'
 
 
 const schedule = {
-  title: "CS Courses for 2018-2019",
+  "title": "CS Courses for 2018-2019",
   "courses" : {
     "F101" : {
       "term": "Fall",
@@ -37,10 +37,14 @@ const schedule = {
 
 
 const App = () => {
+  const clinput1 = "prm1";
+  const clinput2 = "prm2";
+  const clinput3 = "prm3";
+
   return(
     <section>
-      <Banner({schedule.title}) />
-      <Courselist({schedule."courses"}, "term", "number", "title") />
+      <Banner banner_title={schedule.title}/>
+      <Courselist courses={schedule.courses} prm1={clinput1} prm2={clinput2} prm3={clinput3} />
     </section>
   );
     
