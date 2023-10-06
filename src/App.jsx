@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import Banner from "./components/banner.jsx";
-import Courselist from "./components/courselist.jsx";
+import CardList from "./components/cardlist.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const schedule = {
   title: "CS Courses for 2018-2019",
@@ -43,12 +45,7 @@ const App = () => {
   return (
     <section>
       <Banner title={bannerTitle} />
-      <Courselist
-        courses={schedule.courses}
-        prm1={clinput1}
-        prm2={clinput2}
-        prm3={clinput3}
-      />
+      <CardList courseList={Object.values(schedule.courses)} />
     </section>
   );
 };
