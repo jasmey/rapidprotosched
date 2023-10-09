@@ -1,6 +1,4 @@
 import "./card.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Card = ({ course }) => (
   <div className="card m-1 p-2">
@@ -10,7 +8,7 @@ const Card = ({ course }) => (
       </h5>
       <p className="card-text">{course.title}</p>
       {/* divider */}
-      <hr class="solid"></hr>
+      <hr className="solid"></hr>
       <p className="card-text">{course.meets}</p>
     </div>
   </div>
