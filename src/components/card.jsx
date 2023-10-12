@@ -1,8 +1,8 @@
 import "./card.css";
 
-const Card = ({ course }) => (
-  <div className="card m-1 p-2">
-    <div className="card-body">
+const Card = ({ id, course, selected, toggleSelected }) => (
+  <div className="card m-1 p-2" onClick={() => toggleSelected(id)}>
+    <div className={`card-body ${selected.includes(id) ? "selected" : ""}`}>
       <h5 className="card-title">
         {course.term} CS {course.number}
       </h5>

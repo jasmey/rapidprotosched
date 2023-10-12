@@ -1,0 +1,13 @@
+.card .selected {
+  background-color: rgb(146, 174, 119);
+  color: rgb(255, 254, 237);
+}
+
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Increase the size */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow */
+}

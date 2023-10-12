@@ -37,6 +37,7 @@ const TermSelector = ({ selection, setSelection }) => (
   </div>
 );
 
+// state variable for term buttons
 const TermPage = ({ courses }) => {
   const [selection, setSelection] = useState("Fall");
   const filtered_courses = Object.fromEntries(
@@ -44,10 +45,25 @@ const TermPage = ({ courses }) => {
       ([courseKey, courseValue]) => courseValue.term === selection
     )
   );
+
+  //state variable for toggling selected
+  const [selected, setSelected] = useState([]);
+
+  const toggleSelected = (item) =>
+    setSelected(
+      selected.includes(item)
+        ? selected.filter((x) => x !== item)
+        : [...selected, item]
+    );
+
   return (
     <div>
       <TermSelector selection={selection} setSelection={setSelection} />
-      <CardList courseList={filtered_courses} />
+      <CardList
+        courseList={filtered_courses}
+        selected={selected}
+        toggleSelected={toggleSelected}
+      />
     </div>
   );
 };
