@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Banner from "./components/banner.jsx";
-import CardList from "./components/cardlist.jsx";
+import TermPage from "./components/TermPage.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useJsonQuery } from "./utilities/fetch";
 
@@ -20,7 +20,7 @@ const Main = () => {
   return (
     <div>
       <Banner title={data.title} />
-      <CardList courseList={data.courses} />
+      <TermPage courses={data.courses} />
     </div>
   );
 };
