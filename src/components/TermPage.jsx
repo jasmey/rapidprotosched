@@ -1,6 +1,8 @@
 import { useState } from "react";
 import CardList from "./cardlist";
 import "./TermPage.css";
+import Modal from "./Modal";
+import Cart from "./Cart";
 
 const terms = ["Fall", "Winter", "Spring"];
 
@@ -56,9 +58,35 @@ const TermPage = ({ courses }) => {
         : [...selected, item]
     );
 
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false);
+
+  const convCourses = Object.fromEntries(
+    Object.entries(courses).filter(([courseKey, courseValue]) =>
+      selected.includes(courseKey)
+    )
+  );
+
+  if (Array.isArray(selected)) {
+    console.log("is array");
+  } else {
+    console.log("is not array");
+  }
+
   return (
     <div>
-      <TermSelector selection={selection} setSelection={setSelection} />
+      <div>
+        <TermSelector selection={selection} setSelection={setSelection} />
+        <button className="btn btn-outline-dark" onClick={openModal}>
+          <i className="bi bi-cart4"></i>
+        </button>
+      </div>
+
+      <Modal open={open} close={closeModal}>
+        <Cart selected={selected} courses={convCourses} />
+      </Modal>
       <CardList
         courseList={filtered_courses}
         selected={selected}
