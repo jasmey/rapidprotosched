@@ -1,10 +1,13 @@
 import React from "react";
+import Navigation from "./Navigation";
+import "./banner.css";
 
 function Banner({ title }) {
   return (
-    <section>
+    <div className="title">
       <h1>{title}</h1>
-    </section>
+      <Navigation />
+    </div>
   );
 }
 

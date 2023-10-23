@@ -77,9 +77,9 @@ const TermPage = ({ courses }) => {
 
   return (
     <div>
-      <div>
+      <div className="selectorncart">
         <TermSelector selection={selection} setSelection={setSelection} />
-        <button className="btn btn-outline-dark" onClick={openModal}>
+        <button className="cartbtn btn btn-outline-dark" onClick={openModal}>
           <i className="bi bi-cart4"></i>
         </button>
       </div>
