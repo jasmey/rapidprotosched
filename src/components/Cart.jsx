@@ -6,8 +6,6 @@ const formatPrice = new Intl.NumberFormat([], {
 }).format;
 
 const Cart = ({ selected, courses }) => {
-  console.log(selected);
-  console.log(courses);
   return (
     <div className="cart">
       {selected.length === 0 ? (

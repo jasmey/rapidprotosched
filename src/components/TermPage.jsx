@@ -3,6 +3,7 @@ import CardList from "./cardlist";
 import "./TermPage.css";
 import Modal from "./Modal";
 import Cart from "./Cart";
+import { find_conflict } from "../utilities/calcconflicts";
 
 const terms = ["Fall", "Winter", "Spring"];
 
@@ -58,6 +59,57 @@ const TermPage = ({ courses }) => {
         : [...selected, item]
     );
 
+  /////////////////////////
+  //state variable for toggling non-conflicting
+  const [conflicting, setConflicting] = useState([]);
+  const [causeOfConflict, setCauseOfConflict] = useState([]);
+
+  const find_conflicts = (course, courses) => {
+    //course is Javascript object and courses is a object of courses;
+    const classconflicts = Object.entries(courses).filter(
+      ([courseKey, courseValue]) =>
+        find_conflict(course.meets, courseValue.meets)
+    );
+    // console.log("Class conflicts:", classconflicts);
+    return classconflicts; //array of class key-value duples
+  };
+
+  const toggleConflicts = (item) => {
+    // //conflicting is an array of duples
+    console.log("2 conflicts:", find_conflicts(courses[item], courses));
+
+    let newConflicting = [...conflicting];
+    let newCauseOfConflict = [...causeOfConflict];
+    find_conflicts(courses[item], courses).forEach((conflict) => {
+      console.log("conflict", conflict);
+      const index = newConflicting.indexOf(conflict[0]);
+      console.log("includes eval", newCauseOfConflict.includes(item));
+
+      if (newCauseOfConflict.includes(item)) {
+        newConflicting.splice(index, 1); //remove from conflicting
+      } else {
+        if (conflict[0] !== item) {
+          newConflicting = [...newConflicting, conflict[0]]; //add to conflicting
+        }
+      }
+      console.log("newC", newConflicting);
+      console.log("");
+    });
+
+    if (newCauseOfConflict.includes(item)) {
+      const index2 = causeOfConflict.indexOf(item);
+      newCauseOfConflict.splice(index2, 1); //remove from causeOfConflict
+    } else {
+      newCauseOfConflict = [...newCauseOfConflict, item]; //add to causeOfConflict
+    }
+
+    console.log("newCOC", newCauseOfConflict);
+
+    setConflicting(newConflicting);
+    setCauseOfConflict(newCauseOfConflict);
+  };
+
+  ///////////////////////
   const [open, setOpen] = useState(false);
 
   const openModal = () => setOpen(true);
@@ -68,12 +120,6 @@ const TermPage = ({ courses }) => {
       selected.includes(courseKey)
     )
   );
-
-  if (Array.isArray(selected)) {
-    console.log("is array");
-  } else {
-    console.log("is not array");
-  }
 
   return (
     <div>
@@ -90,7 +136,9 @@ const TermPage = ({ courses }) => {
       <CardList
         courseList={filtered_courses}
         selected={selected}
+        conflicting={conflicting}
         toggleSelected={toggleSelected}
+        toggleConflicts={toggleConflicts}
       />
     </div>
   );

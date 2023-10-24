@@ -1,7 +1,11 @@
 .card .selected {
-  background-color: rgb(113, 100, 117);
+  background-color: rgb(190, 150, 76) !important;
   border-radius: 5px;
   color: rgb(255, 254, 237);
+}
+
+.card .conflicting {
+  background-color: rgba(70, 69, 65, 0.822);
 }
 
 .card {
