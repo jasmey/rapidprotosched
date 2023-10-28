@@ -32,7 +32,7 @@ const Card = ({
           to={`/editform/${id}`}
           onClick={(event) => event.stopPropagation()}
         >
-          <img src="../../photos/pencil-square.svg" alt="Edit" />
+          <i className="bi bi-pencil-square"></i>
         </Link>
       </div>
       <p className="card-text">{course.title}</p>
