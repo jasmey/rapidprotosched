@@ -4,6 +4,7 @@ import "./TermPage.css";
 import Modal from "./Modal";
 import Cart from "./Cart";
 import { find_conflict } from "../utilities/calcconflicts";
+import { useAuthState } from "../utilities/firebase";
 
 const terms = ["Fall", "Winter", "Spring"];
 
@@ -121,6 +122,8 @@ const TermPage = ({ courses }) => {
     )
   );
 
+  const [user] = useAuthState();
+
   return (
     <div>
       <div className="selectorncart">
@@ -139,6 +142,7 @@ const TermPage = ({ courses }) => {
         conflicting={conflicting}
         toggleSelected={toggleSelected}
         toggleConflicts={toggleConflicts}
+        user={user}
       />
     </div>
   );

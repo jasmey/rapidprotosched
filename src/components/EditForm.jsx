@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./EditForm.css";
 import { useDbUpdate } from "../utilities/firebase";
 import { useFormData } from "../utilities/useFormData";
+import { useProfile } from "../utilities/profile";
 
 const validateUserData = (key, val) => {
   switch (key) {
@@ -56,9 +57,15 @@ const ButtonBar = ({ message, disabled }) => {
   );
 };
 
-const EditForm = ({ user, courses }) => {
-  const [update, result] = useDbUpdate(`/users/${user.id}`);
-  const [state, change] = useFormData(validateUserData, user);
+const EditForm = ({ courses }) => {
+  const currentURL = window.location.href;
+  const editformIndex = currentURL.indexOf("editform/");
+  const courseID = currentURL.substring(editformIndex + 9);
+
+  let course = courses[courseID];
+
+  const [update, result] = useDbUpdate(`/courses/${courseID}`);
+  const [state, change] = useFormData(validateUserData, course);
 
   const submit = (evt) => {
     evt.preventDefault();
@@ -66,12 +73,6 @@ const EditForm = ({ user, courses }) => {
       update(state.values);
     }
   };
-
-  const currentURL = window.location.href;
-  const editformIndex = currentURL.indexOf("editform/");
-  const courseID = currentURL.substring(editformIndex + 9);
-
-  let course = courses[courseID];
 
   return (
     <form
@@ -86,14 +87,14 @@ const EditForm = ({ user, courses }) => {
       </h2>
       <h2 className="under">'''''''''''''''''''''''''''''''''''''''''</h2>
       <InputField
-        name="course-title"
+        name="title"
         text="Change Course Title"
         value={course.title}
         state={state}
         change={change}
       />
       <InputField
-        name="course-meets"
+        name="meets"
         text="Change Course Meeting Time"
         value={course.meets}
         state={state}

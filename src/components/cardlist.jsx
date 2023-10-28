@@ -9,6 +9,7 @@ const CardList = ({
   conflicting,
   toggleSelected,
   toggleConflicts,
+  user,
 }) => {
   return (
     <div className="course-list">
@@ -21,6 +22,7 @@ const CardList = ({
           conflicting={conflicting}
           toggleSelected={toggleSelected}
           toggleConflicts={toggleConflicts}
+          user={user}
         />
       ))}
     </div>

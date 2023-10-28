@@ -16,13 +16,14 @@ import {
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAUkllv55DaawlAk6_LyqDl7pnYdMR8-Ag",
-  authDomain: "cs-392-schedule-app.firebaseapp.com",
-  projectId: "cs-392-schedule-app",
-  storageBucket: "cs-392-schedule-app.appspot.com",
-  messagingSenderId: "889726512355",
-  appId: "1:889726512355:web:02126a56a37fe3aa7b29d6",
-  measurementId: "G-HPT8ETBCGW",
+  apiKey: "AIzaSyCVaZygY5FMyqi2A_tv_9y5FwQco701cOQ",
+  authDomain: "jazzy-react-toot.firebaseapp.com",
+  databaseURL: "https://jazzy-react-toot-default-rtdb.firebaseio.com",
+  projectId: "jazzy-react-toot",
+  storageBucket: "jazzy-react-toot.appspot.com",
+  messagingSenderId: "738485037785",
+  appId: "1:738485037785:web:3090491aa78626a60f2cc8",
+  measurementId: "G-QTDZQWNQQX",
 };
 
 // Initialize Firebase
@@ -40,6 +41,7 @@ export const useDbData = (path) => {
       onValue(
         ref(database, path),
         (snapshot) => {
+          console.log("Data updated:", snapshot.val());
           setData(snapshot.val());
         },
         (error) => {

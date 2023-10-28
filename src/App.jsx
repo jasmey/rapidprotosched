@@ -6,20 +6,21 @@ import EditForm from "./components/EditForm";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useJsonQuery } from "./utilities/fetch";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useAuthState } from "./utilities/firebase";
+import { useAuthState, useDbData } from "./utilities/firebase";
+import { useProfile } from "./utilities/profile";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Main = () => {
-  const [data, isLoading, error] = useJsonQuery(
-    "https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php"
-  );
+  const [data, isLoading, error] = useDbData("/");
   const user = useAuthState();
 
   if (error) return <h1>Error loading user data: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user data...</h1>;
   if (!data) return <h1>No user data found</h1>;
+
+  console.log(data);
 
   return (
     <div>
@@ -30,7 +31,7 @@ const Main = () => {
           {user ? (
             <Route
               path="/editform/:courseid"
-              element={<EditForm user={user} courses={data.courses} />}
+              element={<EditForm courses={data.courses} />}
             />
           ) : null}
         </Routes>
