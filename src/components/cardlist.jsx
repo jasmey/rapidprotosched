@@ -23,7 +23,6 @@ const CardList = ({
           toggleConflicts={toggleConflicts}
         />
       ))}
-      {console.log("conflictingggg", conflicting)}
     </div>
   );
 };
