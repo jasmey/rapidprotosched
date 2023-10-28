@@ -1,4 +1,5 @@
 import "./card.css";
+import { Link } from "react-router-dom";
 
 const Card = ({
   id,
@@ -23,9 +24,17 @@ const Card = ({
         conflicting.includes(id) ? "conflicting" : "notconflicting"
       }`}
     >
-      <h5 className="card-title">
-        {course.term} CS {course.number}
-      </h5>
+      <div className="top-of-card">
+        <h5 className="card-title">
+          {course.term} CS {course.number}
+        </h5>
+        <Link
+          to={`/editform/${id}`}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <img src="../../photos/pencil-square.svg" alt="Edit" />
+        </Link>
+      </div>
       <p className="card-text">{course.title}</p>
       {/* divider */}
       <hr className="solid"></hr>

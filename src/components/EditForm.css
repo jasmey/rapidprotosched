@@ -1,0 +1,49 @@
+.form-container {
+  background-color: antiquewhite;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.5);
+  padding: 40px;
+  margin: 100px auto;
+  width: 500px;
+  height: 500px;
+  display: grid;
+  place-items: center; /* Center both horizontally and vertically */
+  height: fit-content;
+  text-align: center;
+}
+
+.submit-field {
+  display: flex;
+  justify-content: space-between !important;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.cancel-btn {
+  margin-top: 30px;
+  border-radius: 15px;
+  padding: 10px;
+  height: fit-content;
+  width: fit-content;
+}
+
+.form-component {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.edit-course-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  margin-bottom: 10px;
+  text-transform: lowercase;
+}
+
+input {
+  border-radius: 5px;
+  border-color: beige;
+}

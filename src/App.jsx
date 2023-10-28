@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./App.css";
 import Banner from "./components/banner.jsx";
 import TermPage from "./components/TermPage.jsx";
+import EditForm from "./components/editform";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useJsonQuery } from "./utilities/fetch";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -20,7 +22,15 @@ const Main = () => {
   return (
     <div>
       <Banner title={data.title} />
-      <TermPage courses={data.courses} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<TermPage courses={data.courses} />} />
+          <Route
+            path="/editform/:courseid"
+            element={<EditForm courses={data.courses} />}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };
