@@ -10,6 +10,7 @@ const Card = ({
   toggleSelected,
   toggleConflicts,
   user,
+  profile,
 }) => (
   <div
     className="card m-1 p-2"
@@ -26,19 +27,17 @@ const Card = ({
         conflicting.includes(id) ? "conflicting" : "notconflicting"
       }`}
     >
-      <div className="top-of-card">
+      <div className="top-of-card" data-cy="course">
         <h5 className="card-title">
           {course.term} CS {course.number}
         </h5>
-        {user ? (
+        {profile?.isAdmin && (
           <Link
             to={`/editform/${id}`}
             onClick={(event) => event.stopPropagation()}
           >
             <i className="bi bi-pencil-square"></i>
           </Link>
-        ) : (
-          ""
         )}
       </div>
       <p className="card-text">{course.title}</p>

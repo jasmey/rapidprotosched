@@ -23,6 +23,7 @@ const TermButton = ({ term, selection, setSelection }) => (
         term === selection ? "btn-selected" : "btn-unselected"
       } btn btn-success mb-1 p-2`}
       htmlFor={term}
+      data-cy={term}
     >
       {term}
     </label>
@@ -42,7 +43,7 @@ const TermSelector = ({ selection, setSelection }) => (
 );
 
 // state variable for term buttons
-const TermPage = ({ courses }) => {
+const TermPage = ({ courses, profile }) => {
   const [selection, setSelection] = useState("Fall");
   const filtered_courses = Object.fromEntries(
     Object.entries(courses).filter(
@@ -143,6 +144,7 @@ const TermPage = ({ courses }) => {
         toggleSelected={toggleSelected}
         toggleConflicts={toggleConflicts}
         user={user}
+        profile={profile}
       />
     </div>
   );

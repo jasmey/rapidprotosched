@@ -10,6 +10,7 @@ const CardList = ({
   toggleSelected,
   toggleConflicts,
   user,
+  profile,
 }) => {
   return (
     <div className="course-list">
@@ -23,6 +24,7 @@ const CardList = ({
           toggleSelected={toggleSelected}
           toggleConflicts={toggleConflicts}
           user={user}
+          profile={profile}
         />
       ))}
     </div>
