@@ -1,0 +1,29 @@
+{
+  "kind": "identitytoolkit#DownloadAccountResponse",
+  "users": [
+    {
+      "localId": "B0OvizVw5DK79CmEctXE15ecSHtn",
+      "lastLoginAt": "1700034057274",
+      "displayName": "Harry",
+      "photoUrl": "",
+      "emailVerified": true,
+      "email": "harrypotter@gmail.com",
+      "salt": "fakeSaltoRDDlBokfbNVZQScHlVF",
+      "passwordHash": "fakeHash:salt=fakeSaltoRDDlBokfbNVZQScHlVF:password=Harrypotter",
+      "passwordUpdatedAt": 1700034057274,
+      "validSince": "1700034057",
+      "mfaInfo": [],
+      "createdAt": "1700034057274",
+      "providerUserInfo": [
+        {
+          "providerId": "password",
+          "email": "harrypotter@gmail.com",
+          "federatedId": "harrypotter@gmail.com",
+          "rawId": "harrypotter@gmail.com",
+          "displayName": "Harry",
+          "photoUrl": ""
+        }
+      ]
+    }
+  ]
+}
